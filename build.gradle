@@ -1,0 +1,38 @@
+plugins {
+    id 'java-library'
+    id 'io.papermc.paperweight.userdev' version '2.0.0-beta.18'
+}
+
+group = 'com.lerdorf.fancycombat'
+version = '1.0'
+description = 'FancyCombat plugin'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    maven { url = 'https://repo.codemc.org/repository/maven-public/' }
+    maven { url = 'https://repo.codemc.io/repository/maven-public/' }
+}
+
+// For Minecraft 1.21.8
+dependencies {
+    paperweight.paperDevBundle("1.21.8-R0.1-SNAPSHOT")
+    compileOnly 'de.tr7zw:item-nbt-api-plugin:2.15.1'
+    //implementation("io.papermc.paper:paper-mojangapi:1.21.8-R0.1-SNAPSHOT") // not always available
+    //paperDevBundle("1.21.8-R0.1-SNAPSHOT")
+    // If you're using Folia or a fork:
+    // foliaDevBundle("1.21.8-R0.1-SNAPSHOT")
+    // devBundle("com.example.paperfork", "1.21.8-R0.1-SNAPSHOT")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release.set(21)
+}
+
+tasks.withType(Javadoc).configureEach {
+    options.encoding = 'UTF-8'
+}
