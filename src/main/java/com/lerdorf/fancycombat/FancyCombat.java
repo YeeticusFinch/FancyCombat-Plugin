@@ -647,6 +647,8 @@ public class FancyCombat extends JavaPlugin implements Listener, TabExecutor {
 		if (item.getType().toString().toLowerCase().contains("sword")) {
 			if (modelContains(item, "wep") && !useWEPSwords)
 				return false;
+			if (modelContains(item, "fsp"))
+				return false;
 			if (modelContains(item, "lance"))
 				return false;
 			if (item.getItemMeta().getItemModel() == null && !useVanillaSwords)
