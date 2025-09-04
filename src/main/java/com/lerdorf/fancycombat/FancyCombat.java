@@ -168,7 +168,7 @@ public class FancyCombat extends JavaPlugin implements Listener, TabExecutor {
 			// return false;
 		} else {
 
-		}s
+		}
 		return false;
 	}
 
