@@ -168,7 +168,7 @@ public class FancyCombat extends JavaPlugin implements Listener, TabExecutor {
 			// return false;
 		} else {
 
-		}
+		}s
 		return false;
 	}
 
@@ -645,16 +645,14 @@ public class FancyCombat extends JavaPlugin implements Listener, TabExecutor {
 
 	public boolean isCustomSwingItem(ItemStack item) {
 		if (item.getType().toString().toLowerCase().contains("sword")) {
-			if (modelContains(item, "wep") && !useWEPSwords)
-				return false;
-			if (modelContains(item, "fsp"))
-				return false;
 			if (modelContains(item, "lance"))
 				return false;
-			if (item.getItemMeta().getItemModel() == null && !useVanillaSwords)
-				return false;
+			else if (modelContains(item, "wep"))
+				return useWEPSwords;
+			else if (item.getItemMeta().getItemModel() == null)
+				return useVanillaSwords;
 
-			return true;
+			return false;
 		}
 
 		return false;
